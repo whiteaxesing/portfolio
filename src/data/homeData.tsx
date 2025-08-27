@@ -10,37 +10,54 @@ export const services: Service[] = [
   {
     icon: React.createElement('div'),
     title: 'Custom Software Development',
-    description: 'Full-stack web applications, microservices, and enterprise solutions using React, Angular, Spring Boot, and Rust.',
+    description:
+      'Full-stack web applications, microservices, and enterprise solutions using React, Angular, Spring Boot, and Rust.',
   },
   {
     icon: React.createElement('div'),
     title: 'Database Performance Tuning',
-    description: 'SQL optimization, stored procedures, indexing strategies, and performance analysis for PostgreSQL and MySQL.',
+    description:
+      'SQL optimization, stored procedures, indexing strategies, and performance analysis for PostgreSQL and MySQL.',
   },
   {
     icon: React.createElement('div'),
     title: 'Legacy System Modernization',
-    description: 'Platform migrations, technology stack upgrades, and process automation to reduce operational costs and improve efficiency.',
+    description:
+      'Platform migrations, technology stack upgrades, and process automation to reduce operational costs and improve efficiency.',
   },
   {
     icon: React.createElement('div'),
     title: 'API Development & Integration',
-    description: 'RESTful APIs, GraphQL endpoints, OAuth2 authentication, and third-party system integrations for data automation.',
+    description:
+      'RESTful APIs, GraphQL endpoints, OAuth2 authentication, and third-party system integrations for data automation.',
   },
   {
     icon: React.createElement('div'),
     title: 'DevOps & Infrastructure',
-    description: 'CI/CD pipeline setup, Docker containerization, cloud deployment on AWS/GCP, and monitoring solutions.',
+    description:
+      'CI/CD pipeline setup, Docker containerization, cloud deployment on AWS/GCP, and monitoring solutions.',
   },
   {
     icon: React.createElement('div'),
     title: 'Technical Consulting & Support',
-    description: 'Code reviews, architecture assessments, troubleshooting production issues, and technical documentation.',
+    description:
+      'Code reviews, architecture assessments, troubleshooting production issues, and technical documentation.',
   },
 ];
 
 export const technologies = [
-  'Rust', 'Java', 'Spring Boot', 'Svelte', 'React', 'PostgreSQL', 'MySQL', 'MongoDB', 'GraphQL', 'AWS', 'GCP', 'Ruby on Rails'
+  'Rust',
+  'Java',
+  'Spring Boot',
+  'Svelte',
+  'React',
+  'PostgreSQL',
+  'MySQL',
+  'MongoDB',
+  'GraphQL',
+  'AWS',
+  'GCP',
+  'Ruby on Rails',
 ];
 
 export const companies = [

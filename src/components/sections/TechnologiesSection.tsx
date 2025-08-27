@@ -6,7 +6,12 @@ export default function TechnologiesSection() {
   return (
     <Box sx={{ py: 8, background: '#FEFEFE' }}>
       <Container maxWidth="lg">
-        <Typography variant="h2" textAlign="center" gutterBottom sx={{ color: 'text.primary', mb: 6 }}>
+        <Typography
+          variant="h2"
+          textAlign="center"
+          gutterBottom
+          sx={{ color: 'text.primary', mb: 6 }}
+        >
           Technologies
         </Typography>
         <Box
@@ -28,7 +33,8 @@ export default function TechnologiesSection() {
               key={tech}
               sx={{
                 background: 'linear-gradient(0deg, #106B8F 0%, #002336 100%)',
-                boxShadow: '0px 0px 44px 0px rgba(16, 107, 143, 0.4), 0px -4px 24px 0px rgba(16, 107, 143, 0.3) inset',
+                boxShadow:
+                  '0px 0px 44px 0px rgba(16, 107, 143, 0.4), 0px -4px 24px 0px rgba(16, 107, 143, 0.3) inset',
                 filter: 'drop-shadow(0px 0px 8px rgba(16, 107, 143, 0.2))',
                 borderRadius: '16px',
                 padding: '20px 16px',
@@ -40,7 +46,8 @@ export default function TechnologiesSection() {
                 cursor: 'pointer',
                 '&:hover': {
                   transform: 'translateY(-4px) scale(1.02)',
-                  boxShadow: '0px 8px 56px 0px rgba(16, 107, 143, 0.6), 0px -4px 24px 0px rgba(16, 107, 143, 0.4) inset',
+                  boxShadow:
+                    '0px 8px 56px 0px rgba(16, 107, 143, 0.6), 0px -4px 24px 0px rgba(16, 107, 143, 0.4) inset',
                   filter: 'drop-shadow(0px 4px 12px rgba(16, 107, 143, 0.3))',
                 },
               }}

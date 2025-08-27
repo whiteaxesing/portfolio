@@ -15,7 +15,15 @@ export const metadata: Metadata = {
   description:
     'Full-Stack Software Engineer specializing in backend, microservices, and modern technologies. Personal portfolio and blog.',
   keywords: [
-    'Full-Stack', 'Backend', 'Software Engineer', 'React', 'Next.js', 'Java', 'Rust', 'Spring Boot', 'Costa Rica',
+    'Full-Stack',
+    'Backend',
+    'Software Engineer',
+    'React',
+    'Next.js',
+    'Java',
+    'Rust',
+    'Spring Boot',
+    'Costa Rica',
   ],
   authors: [{ name: 'Francisco González' }],
   creator: 'Francisco González',
@@ -60,19 +68,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body className={inter.className}>
         <ThemeProvider>
           <Navigation />
-          <main style={{ minHeight: '100vh' }}>
-            {children}
-          </main>
+          <main style={{ minHeight: '100vh' }}>{children}</main>
         </ThemeProvider>
       </body>
     </html>

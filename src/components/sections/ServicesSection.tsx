@@ -13,32 +13,38 @@ const services = [
   {
     icon: <CodeIcon sx={{ fontSize: 40 }} />,
     title: 'Custom Software Development',
-    description: 'Full-stack web applications, microservices, and enterprise solutions using React, Angular, Spring Boot, and Rust.',
+    description:
+      'Full-stack web applications, microservices, and enterprise solutions using React, Angular, Spring Boot, and Rust.',
   },
   {
     icon: <DatabaseIcon sx={{ fontSize: 40 }} />,
     title: 'Database Performance Tuning',
-    description: 'SQL optimization, stored procedures, indexing strategies, and performance analysis for PostgreSQL and MySQL.',
+    description:
+      'SQL optimization, stored procedures, indexing strategies, and performance analysis for PostgreSQL and MySQL.',
   },
   {
     icon: <MigrationIcon sx={{ fontSize: 40 }} />,
     title: 'Legacy System Modernization',
-    description: 'Platform migrations, technology stack upgrades, and process automation to reduce operational costs and improve efficiency.',
+    description:
+      'Platform migrations, technology stack upgrades, and process automation to reduce operational costs and improve efficiency.',
   },
   {
     icon: <ApiIcon sx={{ fontSize: 40 }} />,
     title: 'API Development & Integration',
-    description: 'RESTful APIs, GraphQL endpoints, OAuth2 authentication, and third-party system integrations for data automation.',
+    description:
+      'RESTful APIs, GraphQL endpoints, OAuth2 authentication, and third-party system integrations for data automation.',
   },
   {
     icon: <DevOpsIcon sx={{ fontSize: 40 }} />,
     title: 'DevOps & Infrastructure',
-    description: 'CI/CD pipeline setup, Docker containerization, cloud deployment on AWS/GCP, and monitoring solutions.',
+    description:
+      'CI/CD pipeline setup, Docker containerization, cloud deployment on AWS/GCP, and monitoring solutions.',
   },
   {
     icon: <SupportIcon sx={{ fontSize: 40 }} />,
     title: 'Technical Consulting & Support',
-    description: 'Code reviews, architecture assessments, troubleshooting production issues, and technical documentation.',
+    description:
+      'Code reviews, architecture assessments, troubleshooting production issues, and technical documentation.',
   },
 ];
 
@@ -46,10 +52,15 @@ export default function ServicesSection() {
   return (
     <Box sx={{ py: 8, background: '#FEFEFE' }}>
       <Container maxWidth="lg">
-        <Typography variant="h2" textAlign="center" gutterBottom sx={{ color: 'text.primary', mb: 6 }}>
+        <Typography
+          variant="h2"
+          textAlign="center"
+          gutterBottom
+          sx={{ color: 'text.primary', mb: 6 }}
+        >
           What I Do
         </Typography>
-        
+
         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 4, justifyContent: 'center' }}>
           {services.map((service, index) => (
             <Card

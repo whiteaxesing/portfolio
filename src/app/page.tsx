@@ -8,7 +8,8 @@ import CTASection from '@/components/sections/CTASection';
 
 export const metadata: Metadata = {
   title: 'Home',
-  description: 'Personal portfolio of a full-stack developer specialized in React, Next.js and modern technologies.',
+  description:
+    'Personal portfolio of a full-stack developer specialized in React, Next.js and modern technologies.',
 };
 
 export default function HomePage() {

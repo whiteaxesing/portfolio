@@ -14,7 +14,7 @@ html {
 }
 
 body {
-  background: linear-gradient(135deg, #106B8F 0%, #8EC005 50%, #105518 100%);
+  background: #fefefe;
   min-height: 100vh;
 }
 
@@ -24,11 +24,11 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #FEFEFE;
+  background: #fefefe;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #106B8F;
+  background: #106b8f;
   border-radius: 4px;
 }
 

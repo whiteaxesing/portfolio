@@ -91,8 +91,8 @@ export default function Navigation() {
   return (
     <>
       <HideOnScroll>
-        <AppBar 
-          position="fixed" 
+        <AppBar
+          position="fixed"
           elevation={0}
           sx={{
             backgroundColor: 'rgba(255, 255, 255, 0.95)',
@@ -166,8 +166,8 @@ export default function Navigation() {
         }}
         sx={{
           display: { xs: 'block', md: 'none' },
-          '& .MuiDrawer-paper': { 
-            boxSizing: 'border-box', 
+          '& .MuiDrawer-paper': {
+            boxSizing: 'border-box',
             width: 250,
             background: 'rgba(255, 255, 255, 0.98)',
             backdropFilter: 'blur(10px)',

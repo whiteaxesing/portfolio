@@ -3,24 +3,21 @@ import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { ContactForm, ApiResponse } from '@/types';
 
-// Configuración del transporter de email
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
   port: parseInt(process.env.SMTP_PORT || '587'),
-  secure: false, // true para 465, false para otros puertos
+  secure: false, // true for 465, false for other ports
   auth: {
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASSWORD,
   },
 });
 
-// Validación básica de email
 function isValidEmail(email: string): boolean {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
 }
 
-// Sanitizar entrada
 function sanitizeInput(input: string): string {
   return input.trim().replace(/[<>]/g, '');
 }
@@ -29,37 +26,35 @@ export async function POST(request: NextRequest) {
   try {
     const body: ContactForm = await request.json();
 
-    // Validación de datos requeridos
     const { name, email, subject, message } = body;
 
     if (!name || !email || !subject || !message) {
-      return NextResponse.json<ApiResponse>({
-        success: false,
-        message: 'Todos los campos requeridos deben estar completos.',
-      }, { status: 400 });
+      return NextResponse.json<ApiResponse>(
+        {
+          success: false,
+          message: 'All required fields must be completed.',
+        },
+        { status: 400 },
+      );
     }
 
-    // Validar email
     if (!isValidEmail(email)) {
-      return NextResponse.json<ApiResponse>({
-        success: false,
-        message: 'Por favor proporciona un email válido.',
-      }, { status: 400 });
+      return NextResponse.json<ApiResponse>(
+        {
+          success: false,
+          message: 'Please provide a valid email address.',
+        },
+        { status: 400 },
+      );
     }
 
-    // Sanitizar datos
     const sanitizedData = {
       name: sanitizeInput(name),
       email: sanitizeInput(email),
       subject: sanitizeInput(subject),
       message: sanitizeInput(message),
-      company: body.company ? sanitizeInput(body.company) : '',
-      budget: body.budget || 'No especificado',
-      timeline: body.timeline || 'Flexible',
-      projectType: body.projectType || 'No especificado',
     };
 
-    // Crear el contenido del email
     const htmlContent = `
       <!DOCTYPE html>
       <html>
@@ -68,23 +63,23 @@ export async function POST(request: NextRequest) {
         <style>
           body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
           .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-          .header { background: linear-gradient(135deg, #10B981, #059669); color: white; padding: 20px; border-radius: 8px 8px 0 0; }
+          .header { background: linear-gradient(135deg, #106B8F, #002336); color: white; padding: 20px; border-radius: 8px 8px 0 0; }
           .content { background: #f9fafb; padding: 30px; border-radius: 0 0 8px 8px; }
           .field { margin-bottom: 15px; }
           .label { font-weight: bold; color: #374151; }
-          .value { margin-top: 5px; padding: 8px; background: white; border-radius: 4px; border-left: 3px solid #10B981; }
+          .value { margin-top: 5px; padding: 8px; background: white; border-radius: 4px; border-left: 3px solid #106B8F; }
           .message-content { background: white; padding: 20px; border-radius: 8px; border: 1px solid #e5e7eb; }
         </style>
       </head>
       <body>
         <div class="container">
           <div class="header">
-            <h2>Nuevo mensaje desde tu portfolio</h2>
-            <p>Has recibido un nuevo mensaje de contacto</p>
+            <h2>New message from your portfolio</h2>
+            <p>You have received a new contact message</p>
           </div>
           <div class="content">
             <div class="field">
-              <div class="label">Nombre:</div>
+              <div class="label">Name:</div>
               <div class="value">${sanitizedData.name}</div>
             </div>
             
@@ -93,48 +88,29 @@ export async function POST(request: NextRequest) {
               <div class="value">${sanitizedData.email}</div>
             </div>
             
-            ${sanitizedData.company ? `
             <div class="field">
-              <div class="label">Empresa:</div>
-              <div class="value">${sanitizedData.company}</div>
-            </div>
-            ` : ''}
-            
-            <div class="field">
-              <div class="label">Asunto:</div>
+              <div class="label">Subject:</div>
               <div class="value">${sanitizedData.subject}</div>
             </div>
             
             <div class="field">
-              <div class="label">Presupuesto:</div>
-              <div class="value">${sanitizedData.budget}</div>
-            </div>
-            
-            <div class="field">
-              <div class="label">Cronograma:</div>
-              <div class="value">${sanitizedData.timeline}</div>
-            </div>
-            
-            <div class="field">
-              <div class="label">Tipo de proyecto:</div>
-              <div class="value">${sanitizedData.projectType}</div>
-            </div>
-            
-            <div class="field">
-              <div class="label">Mensaje:</div>
+              <div class="label">Message:</div>
               <div class="message-content">${sanitizedData.message.replace(/\n/g, '<br>')}</div>
             </div>
             
             <hr style="margin: 30px 0; border: none; border-top: 1px solid #e5e7eb;">
             <p style="color: #6b7280; font-size: 14px;">
-              Este mensaje fue enviado desde tu portfolio web el ${new Date().toLocaleString('es-CR', { 
-                timeZone: 'America/Costa_Rica',
-                year: 'numeric',
-                month: 'long', 
-                day: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit'
-              })}
+              This message was sent from your portfolio website on ${new Date().toLocaleString(
+                'en-US',
+                {
+                  timeZone: 'America/Costa_Rica',
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric',
+                  hour: '2-digit',
+                  minute: '2-digit',
+                },
+              )}
             </p>
           </div>
         </div>
@@ -142,80 +118,134 @@ export async function POST(request: NextRequest) {
       </html>
     `;
 
-    // Email de notificación para ti
     const mailOptions = {
       from: `"Portfolio Contact" <${process.env.SMTP_FROM}>`,
-      to: process.env.CONTACT_EMAIL, // Tu email personal
+      to: process.env.CONTACT_EMAIL, // Your personal email
       replyTo: sanitizedData.email,
-      subject: `Nuevo contacto: ${sanitizedData.subject}`,
+      subject: `New contact: ${sanitizedData.subject}`,
       html: htmlContent,
     };
 
-    // Email de confirmación para el usuario
     const confirmationEmail = {
-      from: `"Tu Nombre" <${process.env.SMTP_FROM}>`,
+      from: `"Francisco González" <${process.env.SMTP_FROM}>`,
       to: sanitizedData.email,
-      subject: 'Gracias por tu mensaje - Te contactaré pronto',
+      subject: 'Thanks for your message - I\'ll get back to you soon',
       html: `
         <!DOCTYPE html>
         <html>
         <head>
           <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <!--[if mso]>
+          <noscript>
+            <xml>
+              <o:OfficeDocumentSettings>
+                <o:PixelsPerInch>96</o:PixelsPerInch>
+              </o:OfficeDocumentSettings>
+            </xml>
+          </noscript>
+          <![endif]-->
           <style>
-            body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-            .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-            .header { background: linear-gradient(135deg, #10B981, #059669); color: white; padding: 20px; border-radius: 8px; text-align: center; }
-            .content { padding: 30px 0; }
+            body, table, td, p, a, li, blockquote {
+              -webkit-text-size-adjust: 100%;
+              -ms-text-size-adjust: 100%;
+            }
+            table, td {
+              mso-table-lspace: 0pt;
+              mso-table-rspace: 0pt;
+            }
+            body {
+              margin: 0 !important;
+              padding: 0 !important;
+              font-family: Arial, sans-serif;
+              background-color: #f4f4f4;
+            }
+            .email-container {
+              max-width: 600px;
+              margin: 0 auto;
+              background-color: #ffffff;
+            }
+            .header-table {
+              width: 100%;
+              background-color: #106B8F;
+            }
+            .content-table {
+              width: 100%;
+              background-color: #f9fafb;
+            }
           </style>
         </head>
         <body>
-          <div class="container">
-            <div class="header">
-              <h2>¡Gracias por contactarme!</h2>
-            </div>
-            <div class="content">
-              <p>Hola ${sanitizedData.name},</p>
-              <p>He recibido tu mensaje sobre "<strong>${sanitizedData.subject}</strong>" y te responderé lo antes posible, generalmente en 24-48 horas.</p>
-              <p>Mientras tanto, siéntete libre de explorar mi portfolio y ver algunos de mis proyectos recientes.</p>
-              <p>¡Saludos!</p>
-              <p><strong>Tu Nombre</strong><br>
-              Desarrollador Full Stack</p>
-            </div>
+          <!--[if mso | IE]>
+          <table align="center" border="0" cellpadding="0" cellspacing="0" class="email-container" style="width:600px;" width="600">
+            <tr>
+              <td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">
+          <![endif]-->
+          
+          <div class="email-container">
+            <!-- Header -->
+            <table class="header-table" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td style="padding: 20px; text-align: center; color: white;">
+                  <h2 style="margin: 0; font-size: 24px;">Thanks for reaching out!</h2>
+                </td>
+              </tr>
+            </table>
+            
+            <!-- Content -->
+            <table class="content-table" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td style="padding: 30px; line-height: 1.6; color: #333;">
+                  <p style="margin: 0 0 15px 0;">Hi ${sanitizedData.name},</p>
+                  <p style="margin: 0 0 15px 0;">I've received your message about "<strong>${sanitizedData.subject}</strong>" and I'll get back to you as soon as possible, usually within 24-48 hours.</p>
+                  <p style="margin: 0 0 15px 0;">In the meantime, feel free to explore my portfolio and check out some of my recent projects.</p>
+                  <p style="margin: 0 0 5px 0;">Best regards,</p>
+                  <p style="margin: 0;"><strong>Francisco González</strong><br>
+                  Full-Stack Software Engineer</p>
+                </td>
+              </tr>
+            </table>
           </div>
+          
+          <!--[if mso | IE]>
+              </td>
+            </tr>
+          </table>
+          <![endif]-->
         </body>
         </html>
       `,
     };
 
-    // Enviar emails
-    await Promise.all([
-      transporter.sendMail(mailOptions),
-      transporter.sendMail(confirmationEmail),
-    ]);
+    await Promise.all([transporter.sendMail(mailOptions), transporter.sendMail(confirmationEmail)]);
 
     return NextResponse.json<ApiResponse>({
       success: true,
-      message: 'Mensaje enviado exitosamente. Te contactaré pronto.',
+      message: 'Message sent successfully. I will contact you soon.',
     });
-
   } catch (error) {
-    console.error('Error enviando email:', error);
-    
-    return NextResponse.json<ApiResponse>({
-      success: false,
-      message: 'Hubo un error enviando tu mensaje. Por favor intenta de nuevo.',
-    }, { status: 500 });
+    console.error('Error sending email:', error);
+
+    return NextResponse.json<ApiResponse>(
+      {
+        success: false,
+        message: 'There was an error sending your message. Please try again.',
+      },
+      { status: 500 },
+    );
   }
 }
 
-// Método OPTIONS para CORS (si es necesario)
 export async function OPTIONS() {
-  return NextResponse.json({}, {
-    status: 200,
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'POST, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type',
+  return NextResponse.json(
+    {},
+    {
+      status: 200,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'POST, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type',
+      },
     },
-  });
+  );
 }

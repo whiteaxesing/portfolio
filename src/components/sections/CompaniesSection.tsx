@@ -7,16 +7,22 @@ export default function CompaniesSection() {
   return (
     <Box sx={{ py: 6, background: '#FEFEFE', overflow: 'hidden' }}>
       <Container maxWidth="lg">
-        <Typography variant="h3" textAlign="center" gutterBottom sx={{ color: 'text.primary', mb: 4 }}>
+        <Typography
+          variant="h3"
+          textAlign="center"
+          gutterBottom
+          sx={{ color: 'text.primary', mb: 4 }}
+        >
           Brands I&apos;ve Collaborated With
         </Typography>
-        
+
         <Box
           sx={{
             width: '100%',
             overflow: 'hidden',
             maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
-            WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
+            WebkitMaskImage:
+              'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
           }}
         >
           <Box
@@ -31,19 +37,19 @@ export default function CompaniesSection() {
             }}
           >
             {companies.map((company, index) => (
-              <Box 
+              <Box
                 key={`a-${index}`}
-                sx={{ 
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  minWidth: '200px', 
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  minWidth: '200px',
                   justifyContent: 'center',
                   filter: 'grayscale(100%) opacity(0.6)',
                   px: 2,
                 }}
               >
-                <Image 
-                  src={company.logo} 
+                <Image
+                  src={company.logo}
                   alt={company.name}
                   width={180}
                   height={60}
@@ -53,19 +59,19 @@ export default function CompaniesSection() {
             ))}
 
             {companies.map((company, index) => (
-              <Box 
+              <Box
                 key={`b-${index}`}
-                sx={{ 
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  minWidth: '200px', 
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  minWidth: '200px',
                   justifyContent: 'center',
                   filter: 'grayscale(100%) opacity(0.6)',
                   px: 2,
                 }}
               >
-                <Image 
-                  src={company.logo} 
+                <Image
+                  src={company.logo}
                   alt={company.name}
                   width={180}
                   height={60}
