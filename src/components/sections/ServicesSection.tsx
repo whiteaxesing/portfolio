@@ -8,60 +8,74 @@ import {
   Settings as DevOpsIcon,
   BugReport as SupportIcon,
 } from '@mui/icons-material';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const services = [
   {
     icon: <CodeIcon sx={{ fontSize: 40 }} />,
-    title: 'Custom Software Development',
+    title: 'Build Software',
     description:
-      'Full-stack web applications, microservices, and enterprise solutions using React, Angular, Spring Boot, and Rust.',
+      'Full-stack applications that work beautifully. From web to mobile, from idea to reality.',
   },
   {
     icon: <DatabaseIcon sx={{ fontSize: 40 }} />,
-    title: 'Database Performance Tuning',
+    title: 'Optimize Performance',
     description:
-      'SQL optimization, stored procedures, indexing strategies, and performance analysis for PostgreSQL and MySQL.',
+      'Make your systems faster. SQL optimization that transforms 30-second queries into milliseconds.',
   },
   {
     icon: <MigrationIcon sx={{ fontSize: 40 }} />,
-    title: 'Legacy System Modernization',
+    title: 'Modernize Systems',
     description:
-      'Platform migrations, technology stack upgrades, and process automation to reduce operational costs and improve efficiency.',
+      'Transform legacy platforms. Reduce costs, improve efficiency, future-proof your technology.',
   },
   {
     icon: <ApiIcon sx={{ fontSize: 40 }} />,
-    title: 'API Development & Integration',
+    title: 'Connect Everything',
     description:
-      'RESTful APIs, GraphQL endpoints, OAuth2 authentication, and third-party system integrations for data automation.',
+      'APIs that just work. Secure integrations that automate your workflow and scale with your business.',
   },
   {
     icon: <DevOpsIcon sx={{ fontSize: 40 }} />,
-    title: 'DevOps & Infrastructure',
+    title: 'Deploy with Confidence',
     description:
-      'CI/CD pipeline setup, Docker containerization, cloud deployment on AWS/GCP, and monitoring solutions.',
+      'From code to cloud. Automated pipelines that deliver your software reliably, every time.',
   },
   {
     icon: <SupportIcon sx={{ fontSize: 40 }} />,
-    title: 'Technical Consulting & Support',
+    title: 'Guide Your Team',
     description:
-      'Code reviews, architecture assessments, troubleshooting production issues, and technical documentation.',
+      'Technical expertise when you need it. Architecture reviews, code guidance, problem solving.',
   },
 ];
 
 export default function ServicesSection() {
+  const [titleRef, titleVisible] = useScrollAnimation(0.2);
+  const [cardsRef, cardsVisible] = useScrollAnimation(0.1);
+
   return (
     <Box sx={{ py: 8, background: '#FEFEFE' }}>
       <Container maxWidth="lg">
         <Typography
+          ref={titleRef}
           variant="h2"
           textAlign="center"
           gutterBottom
-          sx={{ color: 'text.primary', mb: 6 }}
+          sx={{
+            color: 'text.primary',
+            mb: 6,
+            opacity: titleVisible ? 1 : 0,
+            transform: titleVisible ? 'translateY(0)' : 'translateY(40px)',
+            transition: 'all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+          }}
         >
           What I Do
         </Typography>
 
-        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 4, justifyContent: 'center' }}>
+        <Box
+          ref={cardsRef}
+          sx={{ display: 'flex', flexWrap: 'wrap', gap: 4, justifyContent: 'center' }}
+        >
           {services.map((service, index) => (
             <Card
               key={index}
@@ -71,9 +85,12 @@ export default function ServicesSection() {
                 textAlign: 'center',
                 p: 3,
                 borderRadius: 4,
-                transition: 'all 0.3s ease',
+                opacity: cardsVisible ? 1 : 0,
+                transform: cardsVisible ? 'translateY(0)' : 'translateY(30px)',
+                transition: 'all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                transitionDelay: cardsVisible ? `${index * 0.15}s` : '0s',
                 '&:hover': {
-                  transform: 'translateY(-8px)',
+                  transform: cardsVisible ? 'translateY(-8px)' : 'translateY(30px)',
                   boxShadow: '0 15px 40px rgba(16, 107, 143, 0.2)',
                 },
               }}

@@ -129,7 +129,7 @@ export async function POST(request: NextRequest) {
     const confirmationEmail = {
       from: `"Francisco González" <${process.env.SMTP_FROM}>`,
       to: sanitizedData.email,
-      subject: 'Thanks for your message - I\'ll get back to you soon',
+      subject: "Thanks for your message - I'll get back to you soon",
       html: `
         <!DOCTYPE html>
         <html>

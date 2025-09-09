@@ -1,10 +1,18 @@
-// src/components/sections/HeroSection.tsx
 'use client';
 import { Container, Typography, Button, Box } from '@mui/material';
 import { ArrowForward as ArrowForwardIcon } from '@mui/icons-material';
 import Link from 'next/link';
+import { useState, useEffect } from 'react';
 
 export default function HeroSection() {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    // Trigger animations after component mounts
+    const timer = setTimeout(() => setIsLoaded(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <Box
       sx={{
@@ -27,7 +35,14 @@ export default function HeroSection() {
             minHeight: '80vh',
           }}
         >
-          <Box sx={{ textAlign: { xs: 'center', md: 'left' } }}>
+          <Box
+            sx={{
+              textAlign: { xs: 'center', md: 'left' },
+              opacity: isLoaded ? 1 : 0,
+              transform: isLoaded ? 'translateX(0)' : 'translateX(-60px)',
+              transition: 'all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+            }}
+          >
             <Typography
               variant="h1"
               gutterBottom
@@ -47,7 +62,7 @@ export default function HeroSection() {
               gutterBottom
               sx={{
                 fontWeight: 700,
-                color: '#8EC005',
+                color: '#FEFEFE',
                 textShadow: '0 4px 20px rgba(0,0,0,0.3)',
                 '@media (max-width: 480px)': {
                   fontSize: '4.5rem',
@@ -60,7 +75,7 @@ export default function HeroSection() {
               variant="h1"
               sx={{
                 fontWeight: 700,
-                color: '#8EC005',
+                color: '#FEFEFE',
                 textShadow: '0 4px 20px rgba(0,0,0,0.3)',
                 '@media (max-width: 480px)': {
                   fontSize: '4.5rem',
@@ -71,7 +86,15 @@ export default function HeroSection() {
             </Typography>
           </Box>
 
-          <Box sx={{ textAlign: { xs: 'center', md: 'left' } }}>
+          <Box
+            sx={{
+              textAlign: { xs: 'center', md: 'left' },
+              opacity: isLoaded ? 1 : 0,
+              transform: isLoaded ? 'translateX(0)' : 'translateX(60px)',
+              transition: 'all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+              transitionDelay: '0.3s',
+            }}
+          >
             <Typography
               variant="h4"
               gutterBottom
@@ -85,9 +108,8 @@ export default function HeroSection() {
                 },
               }}
             >
-              Full-Stack Software Engineer specialized in microservices architecture, database
-              performance optimization, and platform migrations that deliver measurable business
-              impact
+              Full-Stack Software Engineer. Expert in microservices, database optimization, and
+              platform migrations that drive real business impact.
             </Typography>
 
             <Box
@@ -96,40 +118,20 @@ export default function HeroSection() {
                 gap: 2,
                 justifyContent: { xs: 'center', md: 'flex-start' },
                 flexWrap: 'wrap',
+                opacity: isLoaded ? 1 : 0,
+                transform: isLoaded ? 'translateY(0)' : 'translateY(30px)',
+                transition: 'all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                transitionDelay: '0.8s',
               }}
             >
               <Button
                 component={Link}
-                href="/portfolio"
+                href="/contact"
                 variant="contained"
                 size="large"
                 endIcon={<ArrowForwardIcon />}
                 sx={{
                   background: 'rgba(254, 254, 254, 0.15)',
-                  backdropFilter: 'blur(10px)',
-                  border: '2px solid rgba(254, 254, 254, 0.3)',
-                  color: 'white',
-                  px: 4,
-                  py: 1.5,
-                  fontSize: '1.1rem',
-                  fontWeight: 600,
-                  borderRadius: '50px',
-                  '&:hover': {
-                    background: 'rgba(254, 254, 254, 0.25)',
-                    transform: 'translateY(-2px)',
-                    boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
-                  },
-                }}
-              >
-                View My Work
-              </Button>
-
-              <Button
-                component={Link}
-                href="/contact"
-                variant="outlined"
-                size="large"
-                sx={{
                   border: '2px solid rgba(254, 254, 254, 0.3)',
                   color: 'white',
                   px: 4,
@@ -145,7 +147,7 @@ export default function HeroSection() {
                   },
                 }}
               >
-                Let&apos;s Work Together
+                Innovation Starts With a Conversation
               </Button>
             </Box>
           </Box>
@@ -159,8 +161,10 @@ export default function HeroSection() {
           left: 0,
           right: 0,
           bottom: 0,
-          opacity: 0.1,
+          opacity: isLoaded ? 0.1 : 0,
           background: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          transition: 'opacity 2s ease-in-out',
+          transitionDelay: '1s',
         }}
       />
     </Box>

@@ -38,8 +38,7 @@ function HideOnScroll({ children }: HideOnScrollProps) {
 const navItems = [
   { label: 'Home', href: '/' },
   { label: 'About Me', href: '/about-me' },
-  { label: 'Experience', href: '/experience' },
-  { label: 'Blog', href: '/blog' },
+  //{ label: 'Blog', href: '/blog' },
   { label: 'Contact', href: '/contact' },
 ];
 

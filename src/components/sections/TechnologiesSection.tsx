@@ -1,20 +1,32 @@
 'use client';
 import { Container, Typography, Box } from '@mui/material';
 import { technologies } from '@/data/homeData';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 export default function TechnologiesSection() {
+  const [titleRef, titleVisible] = useScrollAnimation(0.2);
+  const [gridRef, gridVisible] = useScrollAnimation(0.1);
+
   return (
     <Box sx={{ py: 8, background: '#FEFEFE' }}>
       <Container maxWidth="lg">
         <Typography
-          variant="h2"
+          ref={titleRef}
+          variant="h3"
           textAlign="center"
           gutterBottom
-          sx={{ color: 'text.primary', mb: 6 }}
+          sx={{
+            color: 'text.primary',
+            mb: 6,
+            opacity: titleVisible ? 1 : 0,
+            transform: titleVisible ? 'translateY(0)' : 'translateY(40px)',
+            transition: 'all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+          }}
         >
-          Technologies
+          Crafting with Modern Technologies
         </Typography>
         <Box
+          ref={gridRef}
           sx={{
             display: 'grid',
             gridTemplateColumns: {
@@ -28,7 +40,7 @@ export default function TechnologiesSection() {
             mx: 'auto',
           }}
         >
-          {technologies.map((tech) => (
+          {technologies.map((tech, index) => (
             <Box
               key={tech}
               sx={{
@@ -42,10 +54,17 @@ export default function TechnologiesSection() {
                 color: 'white',
                 fontWeight: 600,
                 fontSize: '0.95rem',
-                transition: 'all 0.3s ease',
                 cursor: 'pointer',
+                // Scroll animation properties
+                opacity: gridVisible ? 1 : 0,
+                transform: gridVisible ? 'translateY(0) scale(1)' : 'translateY(30px) scale(0.9)',
+                transition: 'all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                transitionDelay: gridVisible ? `${index * 0.1}s` : '0s',
+                // Hover effects
                 '&:hover': {
-                  transform: 'translateY(-4px) scale(1.02)',
+                  transform: gridVisible
+                    ? 'translateY(-4px) scale(1.02)'
+                    : 'translateY(30px) scale(0.9)',
                   boxShadow:
                     '0px 8px 56px 0px rgba(16, 107, 143, 0.6), 0px -4px 24px 0px rgba(16, 107, 143, 0.4) inset',
                   filter: 'drop-shadow(0px 4px 12px rgba(16, 107, 143, 0.3))',
