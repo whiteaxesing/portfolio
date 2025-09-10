@@ -1,19 +1,6 @@
 'use client';
-import {
-  Container,
-  Typography,
-  Box,
-  TextField,
-  Button,
-  Paper,
-  Alert,
-  Divider,
-} from '@mui/material';
-import {
-  Send as SendIcon,
-  CalendarMonth as CalendarIcon,
-  Message as MessageIcon,
-} from '@mui/icons-material';
+import { Container, Typography, Box, TextField, Button, Paper, Alert, Divider } from '@mui/material';
+import { Send as SendIcon, CalendarMonth as CalendarIcon, Message as MessageIcon } from '@mui/icons-material';
 import { useState } from 'react';
 import CalendlyWidget from './CalendlyWidget';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
@@ -136,7 +123,7 @@ export default function ContactForm() {
           ref={optionsRef}
           sx={{
             textAlign: 'center',
-            mb: 8,
+            mb: 4,
             opacity: optionsVisible ? 1 : 0,
             transform: optionsVisible ? 'translateY(0)' : 'translateY(40px)',
             transition: 'all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
@@ -163,8 +150,7 @@ export default function ContactForm() {
               lineHeight: 1.6,
             }}
           >
-            Send a message for detailed project discussions, or schedule a call for immediate
-            conversation.
+            Send a message for detailed project discussions, or schedule a call for immediate conversation.
           </Typography>
         </Box>
 
@@ -185,13 +171,16 @@ export default function ContactForm() {
               background: '#FEFEFE',
               border: '1px solid rgba(16, 107, 143, 0.1)',
               boxShadow: '0 4px 25px rgba(16, 107, 143, 0.1)',
+              display: 'flex',
+              flexDirection: 'column',
+              height: { lg: '630px' }, 
               opacity: optionsVisible ? 1 : 0,
               transform: optionsVisible ? 'translateY(0)' : 'translateY(30px)',
               transition: 'all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
               transitionDelay: '0.2s',
             }}
           >
-            <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
               <MessageIcon sx={{ fontSize: 32, color: '#106B8F', mr: 2 }} />
               <Typography variant="h4" sx={{ color: 'text.primary', fontWeight: 600 }}>
                 Send a Message
@@ -260,7 +249,7 @@ export default function ContactForm() {
                 required
                 fullWidth
                 multiline
-                rows={6}
+                rows={10}
                 variant="outlined"
                 sx={{ mb: 3 }}
               />
@@ -321,14 +310,18 @@ export default function ContactForm() {
               border: '1px solid rgba(16, 107, 143, 0.1)',
               boxShadow: '0 4px 25px rgba(16, 107, 143, 0.1)',
               overflow: 'hidden',
+              height: { lg: '630px' },
+              display: 'flex',
+              flexDirection: 'column',
               opacity: optionsVisible ? 1 : 0,
               transform: optionsVisible ? 'translateY(0)' : 'translateY(30px)',
               transition: 'all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
               transitionDelay: '0.4s',
+              mb: 5,
             }}
           >
             <Box sx={{ p: 4, pb: 2 }}>
-              <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
                 <CalendarIcon sx={{ fontSize: 32, color: '#106B8F', mr: 2 }} />
                 <Typography variant="h4" sx={{ color: 'text.primary', fontWeight: 600 }}>
                   Schedule a Call
@@ -338,7 +331,7 @@ export default function ContactForm() {
                 variant="body1"
                 sx={{
                   color: 'text.secondary',
-                  mb: 3,
+                  mb: -1,
                   fontSize: '1.1rem',
                   lineHeight: 1.6,
                 }}
@@ -347,10 +340,11 @@ export default function ContactForm() {
               </Typography>
             </Box>
 
-            <CalendlyWidget
-              url="https://calendly.com/franciscogonzalezmadrigal/new-meeting?hide_event_type_details=1&hide_gdpr_banner=1"
-              height="550px"
-            />
+            <Box sx={{ flex: 1}}>
+              <CalendlyWidget
+                url="https://calendly.com/franciscogonzalezmadrigal/new-meeting?hide_event_type_details=1&hide_gdpr_banner=1"
+              />
+            </Box>
           </Paper>
         </Box>
       </Container>

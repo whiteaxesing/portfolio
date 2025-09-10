@@ -11,7 +11,7 @@ export default function AboutSection() {
   const [buttonRef, buttonVisible] = useScrollAnimation(0.4);
 
   return (
-    <Box sx={{ py: 8, background: '#FEFEFE' }}>
+    <Box sx={{ py: 6, background: '#FEFEFE' }}>
       <Container maxWidth="lg">
         <Box
           sx={{

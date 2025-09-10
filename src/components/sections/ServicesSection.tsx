@@ -15,7 +15,7 @@ const services = [
     icon: <CodeIcon sx={{ fontSize: 40 }} />,
     title: 'Build Software',
     description:
-      'Full-stack applications that work beautifully. From web to mobile, from idea to reality.',
+      'Full-stack applications that work seamlessly. From web to mobile, from idea to reality.',
   },
   {
     icon: <DatabaseIcon sx={{ fontSize: 40 }} />,
@@ -54,7 +54,7 @@ export default function ServicesSection() {
   const [cardsRef, cardsVisible] = useScrollAnimation(0.1);
 
   return (
-    <Box sx={{ py: 8, background: '#FEFEFE' }}>
+    <Box sx={{ py: 6, background: '#FEFEFE' }}>
       <Container maxWidth="lg">
         <Typography
           ref={titleRef}

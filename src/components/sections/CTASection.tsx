@@ -59,7 +59,8 @@ export default function CTASection() {
             variant="outlined"
             size="large"
             sx={{
-              border: '2px solid white',
+              background: 'rgba(254, 254, 254, 0.15)',
+                  border: '2px solid rgba(254, 254, 254, 0.3)',
               color: 'white',
               px: 6,
               py: 2,

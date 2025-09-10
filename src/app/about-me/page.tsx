@@ -3,6 +3,7 @@ import { Container, Typography, Box, Button } from '@mui/material';
 import { ArrowForward as ArrowForwardIcon } from '@mui/icons-material';
 import Link from 'next/link';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import CTASection from '@/components/sections/CTASection';
 
 const timelineEvents = [
   {
@@ -47,7 +48,7 @@ function TimelineItem({ event, index }: { event: (typeof timelineEvents)[0]; ind
         display: 'flex',
         alignItems: 'flex-start',
         gap: { xs: 3, md: 6 },
-        mb: { xs: 6, md: 8 },
+        mb: { xs: 4, md: 6 },
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? 'translateY(0)' : 'translateY(40px)',
         transition: 'all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
@@ -148,19 +149,6 @@ export default function AboutSection() {
           transition: 'all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
         }}
       >
-        {/* Background Pattern like your HeroSection */}
-        <Box
-          sx={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            opacity: 0.1,
-            background: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          }}
-        />
-
         <Container maxWidth="md" sx={{ position: 'relative', zIndex: 2 }}>
           <Typography
             variant="h1"
@@ -189,13 +177,13 @@ export default function AboutSection() {
             }}
           >
             Every journey has a beginning. Mine started with a simple belief: technology should work
-            beautifully.
+            seamlessly.
           </Typography>
         </Container>
       </Box>
 
       {/* Timeline Section - White background like your other sections */}
-      <Box sx={{ py: { xs: 8, md: 12 }, background: '#FEFEFE' }}>
+      <Box sx={{ py: { xs: 4, md: 6 }, background: '#FEFEFE' }}>
         <Container maxWidth="lg">
           <Box sx={{ maxWidth: '900px', mx: 'auto', pl: { xs: 2, md: 4 } }}>
             {timelineEvents.map((event, index) => (
@@ -266,7 +254,7 @@ export default function AboutSection() {
       </Box>
 
       {/* Future Section - White background */}
-      <Box sx={{ py: { xs: 8, md: 12 }, background: '#FEFEFE' }}>
+      <Box sx={{ py: { xs: 4, md: 6 }, background: '#FEFEFE' }}>
         <Container maxWidth="md">
           <Box
             ref={futureRef}
@@ -339,35 +327,10 @@ export default function AboutSection() {
                 From rhythm in music to structure in code.
               </Typography>
             </Box>
-
-            <Button
-              component={Link}
-              href="/contact"
-              variant="contained"
-              size="large"
-              endIcon={<ArrowForwardIcon />}
-              sx={{
-                background: 'linear-gradient(45deg, #106B8F, #8EC005)',
-                px: 6,
-                py: 2,
-                fontSize: '1.1rem',
-                fontWeight: 600,
-                borderRadius: '50px',
-                textTransform: 'none',
-                letterSpacing: '0.02em',
-                '&:hover': {
-                  background: 'linear-gradient(45deg, #8EC005, #106B8F)',
-                  transform: 'translateY(-2px)',
-                  boxShadow: '0 20px 40px rgba(16, 107, 143, 0.2)',
-                },
-                transition: 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-              }}
-            >
-              Innovation Starts With a Conversation
-            </Button>
           </Box>
         </Container>
       </Box>
+      <CTASection />
     </Box>
   );
 }
