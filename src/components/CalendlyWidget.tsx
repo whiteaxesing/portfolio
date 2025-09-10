@@ -9,8 +9,8 @@ interface CalendlyWidgetProps {
 
 export default function CalendlyWidget({
   url,
-  height = '700px',
-  minWidth = '320px',
+  height = '600px',
+  minWidth = '300px',
 }: CalendlyWidgetProps) {
   useEffect(() => {
     const script = document.createElement('script');
