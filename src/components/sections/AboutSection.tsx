@@ -35,7 +35,7 @@ export default function AboutSection() {
               sx={{
                 width: 300,
                 height: 300,
-                background: 'linear-gradient(45deg, #106B8F, #8EC005)',
+                background: 'linear-gradient(45deg, #106B8F, #0A4A63)',
                 fontSize: '6rem',
                 fontWeight: 'bold',
                 mx: 'auto',
@@ -73,8 +73,9 @@ export default function AboutSection() {
                 maintainable software.
               </Typography>
               <Typography variant="body1" color="text.secondary">
-                I’m passionate about software architecture and aspire to design systems that evolve
-                seamlessly with business needs.
+                I&apos;m passionate about software architecture and database engineering, aspiring
+                to design systems that evolve seamlessly with business needs while ensuring optimal
+                data performance.
               </Typography>
             </Box>
             <Box

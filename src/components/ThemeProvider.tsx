@@ -15,14 +15,14 @@ const palette = {
   primary: {
     main: '#106B8F',
     dark: '#002336',
-    light: '#8EC005',
+    light: '#106B8F',
     contrastText: '#FEFEFE',
   },
   secondary: {
-    main: '#8EC005',
-    dark: '#105518',
-    light: '#FEFEFE',
-    contrastText: '#002336',
+    main: '#0A4A63',
+    dark: '#002336',
+    light: '#106B8F',
+    contrastText: '#FEFEFE',
   },
   background: {
     default: '#FEFEFE',
@@ -42,13 +42,13 @@ const palette = {
     500: '#9E9E9E',
     600: '#64501E',
     700: '#264454',
-    800: '#105518',
+    800: '#0A4A63',
     900: '#002336',
   },
   success: {
-    main: '#8EC005',
-    light: '#A8D435',
-    dark: '#105518',
+    main: '#106B8F',
+    light: '#106B8F',
+    dark: '#0A4A63',
   },
   error: {
     main: '#D32F2F',
@@ -87,7 +87,7 @@ const components = {
         background: 'linear-gradient(45deg, #106B8F, #002336)',
         color: '#FEFEFE',
         '&:hover': {
-          background: 'linear-gradient(45deg, #002336, #105518)',
+          background: 'linear-gradient(45deg, #002336, #0A4A63)',
         },
       },
       outlined: {
@@ -114,7 +114,7 @@ const components = {
         '&:hover': {
           transform: 'translateY(-8px)',
           boxShadow: '0 15px 40px rgba(16, 107, 143, 0.2)',
-          borderColor: 'rgba(142, 192, 5, 0.3)',
+          borderColor: 'rgba(16, 107, 143, 0.3)',
         },
       },
     },
@@ -122,13 +122,13 @@ const components = {
   MuiChip: {
     styleOverrides: {
       root: {
-        background: 'linear-gradient(45deg, #8EC005, #105518)',
+        background: 'linear-gradient(45deg, #106B8F, #0A4A63)',
         color: '#FEFEFE',
         fontWeight: 500,
         borderRadius: '20px',
         '&:hover': {
           transform: 'translateY(-1px)',
-          boxShadow: '0 4px 12px rgba(142, 192, 5, 0.4)',
+          boxShadow: '0 4px 12px rgba(16, 107, 143, 0.4)',
         },
         transition: 'all 0.3s ease',
       },

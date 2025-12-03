@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import ThemeProvider from '@/components/ThemeProvider';
 import Navigation from '@/components/Navigation';
+import ConditionalFooter from '@/components/ConditionalFooter';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -75,6 +76,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ThemeProvider>
           <Navigation />
           <main style={{ minHeight: '100vh' }}>{children}</main>
+          <ConditionalFooter />
         </ThemeProvider>
       </body>
     </html>

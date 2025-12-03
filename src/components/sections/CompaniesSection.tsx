@@ -9,7 +9,7 @@ export default function CompaniesSection() {
   const [carouselRef, carouselVisible] = useScrollAnimation(0.1);
 
   return (
-    <Box sx={{ py: 6 , pb: 12, background: '#FEFEFE', overflow: 'hidden' }}>
+    <Box sx={{ py: 6, pb: 12, background: '#FEFEFE', overflow: 'hidden' }}>
       <Container maxWidth="lg">
         <Typography
           ref={titleRef}

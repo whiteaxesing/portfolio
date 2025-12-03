@@ -1,7 +1,5 @@
 'use client';
-import { Container, Typography, Box, Button } from '@mui/material';
-import { ArrowForward as ArrowForwardIcon } from '@mui/icons-material';
-import Link from 'next/link';
+import { Container, Typography, Box } from '@mui/material';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import CTASection from '@/components/sections/CTASection';
 
@@ -86,7 +84,7 @@ function TimelineItem({ event, index }: { event: (typeof timelineEvents)[0]; ind
             width: '8px',
             height: '8px',
             borderRadius: '50%',
-            background: 'linear-gradient(45deg, #106B8F, #8EC005)',
+            background: 'linear-gradient(45deg, #106B8F, #0A4A63)',
             boxShadow: '0 0 0 4px rgba(16, 107, 143, 0.2)',
           },
           '&::after': {
@@ -231,10 +229,10 @@ export default function AboutSection() {
                 mb: 4,
               }}
             >
-              Music has been with me since childhood — from &apos;80s records on my
-              father&apos;s turntable to my sister&apos;s Discman. Now I play drums, piano,
-              bass, guitar, and sing. Music taught me rhythm, harmony, and flow — the same qualities
-              I bring to building software.
+              Music has been with me since childhood — from &apos;80s records on my father&apos;s
+              turntable to my sister&apos;s Discman. Now I play drums, piano, bass, guitar, and
+              sing. Music taught me rhythm, harmony, and flow — the same qualities I bring to
+              building software.
             </Typography>
             <Typography
               variant="body1"
@@ -245,9 +243,9 @@ export default function AboutSection() {
                 textAlign: 'center',
               }}
             >
-              I believe in balance. In code, in music, in life. That&apos;s why I&apos;m
-              passionate about finance, fitness, and nature — areas that keep me grounded, focused,
-              and energized.
+              I believe in balance. In code, in music, in life. That&apos;s why I&apos;m passionate
+              about finance, fitness, and nature — areas that keep me grounded, focused, and
+              energized.
             </Typography>
           </Box>
         </Container>
@@ -285,9 +283,9 @@ export default function AboutSection() {
                 mb: 6,
               }}
             >
-              Advancing in database administration with SQL focus, expanding into NoSQL by late
-              2025, and beginning my Master&apos;s in Software Architecture in 2026 — a discipline
-              I first embraced at Mismo and THD, and now live every day.
+              Beginning my Master&apos;s in Database Technologies in 2026 — merging the software
+              architecture foundation I built at Mismo and THD with the database engineering I
+              practice daily.
             </Typography>
 
             <Box
@@ -295,7 +293,7 @@ export default function AboutSection() {
                 p: 4,
                 borderRadius: 3,
                 background:
-                  'linear-gradient(135deg, rgba(16, 107, 143, 0.05), rgba(142, 192, 5, 0.05))',
+                  'linear-gradient(135deg, rgba(16, 107, 143, 0.05), rgba(10, 74, 99, 0.05))',
                 border: '1px solid rgba(16, 107, 143, 0.1)',
                 mb: 6,
               }}

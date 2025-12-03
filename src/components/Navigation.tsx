@@ -37,8 +37,9 @@ function HideOnScroll({ children }: HideOnScrollProps) {
 
 const navItems = [
   { label: 'Home', href: '/' },
-  { label: 'About Me', href: '/about-me' },
-  //{ label: 'Blog', href: '/blog' },
+  { label: 'About', href: '/about-me' },
+  { label: 'Resume', href: '/resume' },
+  // { label: 'Blog', href: '/blog' }, // Temporarily disabled
   { label: 'Contact', href: '/contact' },
 ];
 
@@ -71,7 +72,8 @@ export default function Navigation() {
                 backgroundColor: pathname === item.href ? 'primary.main' : 'transparent',
                 color: pathname === item.href ? 'white' : 'text.primary',
                 '&:hover': {
-                  backgroundColor: pathname === item.href ? 'primary.dark' : 'primary.light',
+                  backgroundColor:
+                    pathname === item.href ? 'primary.dark' : 'rgba(16, 107, 143, 0.1)',
                   color: pathname === item.href ? 'white' : 'primary.main',
                 },
                 mx: 1,
@@ -131,7 +133,8 @@ export default function Navigation() {
                       py: 1,
                       borderRadius: 2,
                       '&:hover': {
-                        backgroundColor: pathname === item.href ? 'primary.dark' : 'primary.light',
+                        backgroundColor:
+                          pathname === item.href ? 'primary.dark' : 'rgba(16, 107, 143, 0.1)',
                         color: pathname === item.href ? 'white' : 'primary.main',
                       },
                     }}
