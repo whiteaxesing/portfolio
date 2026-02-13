@@ -141,8 +141,8 @@ export default function BlogPage() {
 
         if (error) throw error;
         setPosts(data || []);
-      } catch (error) {
-        console.error('Error fetching blog posts:', error);
+      } catch {
+        // Supabase query failed (e.g. table doesn't exist yet) — fall back to empty state
       } finally {
         setLoading(false);
       }

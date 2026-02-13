@@ -234,7 +234,7 @@ export const experiences: Experience[] = [
 export const education = [
   {
     institution: 'Universidad Cenfotec',
-    logo: '/cenfotec.png',
+    logo: '/logos/cenfotec.png',
     degree: "Master's in Database Technologies",
     period: '2026 - 2028 (Expected)',
     description:
@@ -242,7 +242,7 @@ export const education = [
   },
   {
     institution: 'Tecnológico de Costa Rica',
-    logo: '/logo-tec.png',
+    logo: '/logos/logo-tec.png',
     degree: "Bachelor's in Computer Engineering",
     period: '2018 - Aug 2024',
     description:
